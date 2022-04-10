@@ -9,10 +9,15 @@ if(count($_POST) > 0) {
 
     try {
         $user = $login->checkLogin();
+        header("Location: day_records.php");
+    } catch (ValidationException $e) {
+        $exceptionValidation = $e;
     } catch (AppException $e) {
         $exception = $e;
     }
 
 }
 
-loadView('login', $_POST + ['exception' => $exception]);
+//todo: load the specific messages email/pwd above each box
+
+loadView('login', $_POST + ['exception' => $exception] + ['exceptionValidation' => $exceptionValidation]);

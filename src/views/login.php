@@ -22,18 +22,26 @@
                 <i class="icofont-runner-alt-1 ml-2"></i>
             </div>
             <div class="card-body">
+                <?php include(VIEW_PATH . '/templates/messages.php') ?>
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email"
-                    class="form-control"
+                    class="form-control <?= isset($exceptionValidation) && $exceptionValidation->getAttributeMessage('email') ? 'is-invalid ':'' ?>"
                     placeholder="Your e-mail here"
-                    autofocus>
+                    autofocus
+                    value="<?= $email?>">
+                    <div class="invalid-feedback">
+                        <?= isset($exceptionValidation) && $exceptionValidation->getAttributeMessage('email') ?$exceptionValidation->getAttributeMessage('email')  :'' ?>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password"
-                           class="form-control"
+                           class="form-control <?= isset($exceptionValidation) && $exceptionValidation->getAttributeMessage('password') ? 'is-invalid ':'' ?>"
                            placeholder="Password">
+                    <div class="invalid-feedback">
+                        <?= isset($exceptionValidation) && $exceptionValidation->getAttributeMessage('password') ?$exceptionValidation->getAttributeMessage('password') :'' ?>
+                    </div>
                 </div>
             </div>
             <div class="card-footer">

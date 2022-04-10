@@ -1,17 +1,16 @@
 <?php
+//ini_set('display_errors', 1);
+//error_reporting(~0);
 
-require_once(dirname(__FILE__, 2) . '/src/config/database.php');
+require_once(dirname(__FILE__, 2) . '/src/config/config.php');
+//require_once(dirname(__FILE__, 2) . '/src/controllers/login.php');
 
-$request = 'select * from users';
-$result = Database::getResultFromQuery($request);
+$uri = urldecode($_SERVER['REQUEST_URI']);
 
-$arr = [1,2,3,4];
-while($rows = $result->fetch_assoc()) {
-    print_r($rows);
-    echo '<br>';
+if ($uri === '/' || $uri === '' || $uri === '/index.php') {
+    $uri = '/login.php';
 }
 
-
-
+require_once(CONTROLLER_PATH . "/{$uri}");
 
 
