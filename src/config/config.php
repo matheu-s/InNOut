@@ -7,6 +7,7 @@ setlocale('en-US', 'en-US.utf', 'english');
 define(MODEL_PATH, realpath(dirname(__FILE__) . '/../models'));
 define(VIEW_PATH, realpath(dirname(__FILE__) . '/../views'));
 define(CONTROLLER_PATH, realpath(dirname(__FILE__) . '/../controllers'));
+define(TEMPLATE_PATH, realpath(dirname(__FILE__) . '/../views/templates'));
 
 //Files
 require_once(realpath(dirname(__FILE__) . '/database.php'));
